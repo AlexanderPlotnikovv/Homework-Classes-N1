@@ -2,9 +2,18 @@
 
 class Calculator
 {
-public:
+protected:
 	double num1;
 	double num2;
+public:
+	int equal1(int a) {
+		num1 = a;
+		return num1;
+	}
+	int equal2(int a) {
+		num2 = a;
+		return num2;
+	}
 	double add(double num1, double num2) {
 		return num1 + num2;
 	}
@@ -40,20 +49,21 @@ public:
 int main()
 {
 	Calculator num;
+	int a, b;
 	for (;;) {
 		std::cout << "Enter num1: ";
-		std::cin >> num.num1;
+		std::cin >> a;
 		std::cout << "Enter num2: ";
-		std::cin >> num.num2;
-		if (num.set_num1(num.num1) == 0 || num.set_num2(num.num2) == 0) {
+		std::cin >> b;
+		if (num.set_num1(num.equal1(a)) == 0 || num.set_num2(num.equal2(b)) == 0) {
 			std::cout << "Incorrect input!" << std::endl;
 			continue;
 		}
-		std::cout << num.num1 << " + " << num.num2 << " = " << num.add(num.num1, num.num2) << std::endl;
-		std::cout << num.num1 << " - " << num.num2 << " = " << num.subtract_1_2(num.num1, num.num2) << std::endl;
-		std::cout << num.num2 << " - " << num.num1 << " = " << num.subtract_2_1(num.num1, num.num2) << std::endl;
-		std::cout << num.num1 << " * " << num.num2 << " = " << num.multiply(num.num1, num.num2) << std::endl;
-		std::cout << num.num1 << " / " << num.num2 << " = " << num.divide_1_2(num.num1, num.num2) << std::endl;
-		std::cout << num.num2 << " / " << num.num1 << " = " << num.divide_2_1(num.num1, num.num2) << std::endl;
+		std::cout << num.equal1(a) << " + " << num.equal2(b) << " = " << num.add(num.equal1(a), num.equal2(b)) << std::endl;
+		std::cout << num.equal1(a) << " - " << num.equal2(b) << " = " << num.subtract_1_2(num.equal1(a), num.equal2(b)) << std::endl;
+		std::cout << num.equal2(b) << " - " << num.equal1(a) << " = " << num.subtract_2_1(num.equal1(a), num.equal2(b)) << std::endl;
+		std::cout << num.equal1(a) << " * " << num.equal2(b) << " = " << num.multiply(num.equal1(a), num.equal2(b)) << std::endl;
+		std::cout << num.equal1(a) << " / " << num.equal2(b) << " = " << num.divide_1_2(num.equal1(a), num.equal2(b)) << std::endl;
+		std::cout << num.equal2(b) << " / " << num.equal1(a) << " = " << num.divide_2_1(num.equal1(a), num.equal2(b)) << std::endl;
 	}
 }
